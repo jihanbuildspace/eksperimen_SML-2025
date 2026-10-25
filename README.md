@@ -1,133 +1,290 @@
-# 🏥 Advanced Machine Learning System: Insurance Data Preprocessing and Baseline Training Pipeline
+<div align="center">
 
-## Project Overview
+# 🏥 Medical Insurance Cost Prediction
+### End-to-End Automated Preprocessing & Baseline MLOps Pipeline
 
-This project delivers a robust, end-to-end solution for preprocessing and Machine Learning model training on healthcare insurance data. The primary objective is to establish a pipeline that is fundamentally **reproducible**, meticulously documented, and readily prepared for deployment or subsequent experimentation. Every stage is automated, covering raw data cleaning, systematic outlier handling, feature encoding, scaling, model training, artifact logging via MLflow, and seamless integration with GitHub Actions for Continuous Integration (CI).
+<p align="center">
+  <em>✨ Crafting reproducible data pipelines, leakage-free transformations, and robust MLOps workflows. ✨</em>
+</p>
 
-## 📚 Context and Motivation
+<p align="center">
+  <a href="https://github.com/jihanbuildspace/eksperimen_SML-2025"><img src="https://img.shields.io/badge/GITHUB-REPO-181717?style=for-the-badge&logo=github&logoColor=white" alt="GitHub" /></a>
+  <a href="mailto:G211220027@student.usm.ac.id"><img src="https://img.shields.io/badge/EMAIL-USM-0078D4?style=for-the-badge&logo=microsoftoutlook&logoColor=white" alt="Email" /></a>
+  <a href="https://github.com/jihanbuildspace/eksperimen_SML-2025/actions/workflows/preprocessing.yml"><img src="https://img.shields.io/badge/CI%2FCD-AUTOMATED-28A745?style=for-the-badge&logo=githubactions&logoColor=white" alt="CI/CD" /></a>
+</p>
 
-In the domain of health insurance, accurate medical cost prediction is paramount for informed decision-making, premium calculation, and comprehensive risk analysis. The dataset utilized in this project is sourced from the widely-used [Kaggle - Medical Cost Personal Datasets](https://www.kaggle.com/datasets/mirichoi0218/insurance). It contains personal medical cost data based on key features, including:
+<p align="center">
+  <b>A reproducible, production-grade Machine Learning pipeline designed for healthcare insurance risk prediction.</b><br>
+  Featuring automated data leakage-free preprocessing, IQR outlier clipping, Scikit-Learn pipeline serialization, MLflow experiment tracking, and continuous integration via GitHub Actions.
+</p>
 
-- **age**: Beneficiary's age
-- **sex**: Gender
-- **bmi**: Body Mass Index
-- **children**: Number of children covered by health insurance
-- **smoker**: Smoking status
-- **region**: Residential area in the US (e.g., northeast, southwest)
-- **charges**: Individual annual medical charges (Target Variable)
+[Quick Start](#-quick-start-guide) • [Architecture](#️-pipeline-architecture--workflow) • [Tech Stack](#️-tech-stack--tools) • [MLflow Results](#-mlflow-experiment-tracking--baseline-results) • [CI/CD](#-cicd-automation-github-actions)
 
-A well-engineered preprocessing workflow is critical to ensure that the Machine Learning model can learn optimally from the data, leading to reliable and trustworthy predictions.
+</div>
 
-## 🎯 Project Objectives
+---
 
-1.  To provide an automated, consistent, and highly reusable preprocessing pipeline.
-2.  To systematically address data inconsistencies, including missing values and statistical outliers.
-3.  To ensure the entire workflow is executable both locally and automatically via GitHub Actions (Continuous Integration).
-4.  To log all critical artifacts (pipeline object, processed data, trained model, and metrics) into **MLflow** for robust experiment tracking and guaranteed reproducibility.
-5.  To facilitate smooth collaboration and simplified deployment through clear documentation and standardized workflows.
+## 🛠️ Tech Stack & Tools
 
-## ✨ Core Features and Technical Implementation
+<p align="center">
+  <img src="https://img.shields.io/badge/PYTHON-3776AB?style=for-the-badge&logo=python&logoColor=white" alt="Python" />
+  <img src="https://img.shields.io/badge/SCIKIT--LEARN-F7931E?style=for-the-badge&logo=scikit-learn&logoColor=white" alt="Scikit-Learn" />
+  <img src="https://img.shields.io/badge/PANDAS-150458?style=for-the-badge&logo=pandas&logoColor=white" alt="Pandas" />
+  <img src="https://img.shields.io/badge/NUMPY-013243?style=for-the-badge&logo=numpy&logoColor=white" alt="NumPy" />
+  <img src="https://img.shields.io/badge/JOBLIB-4B8BBE?style=for-the-badge&logo=python&logoColor=white" alt="Joblib" />
+</p>
 
-- ⚡ **Automated Preprocessing:** Unified, end-to-end transformation for both numerical and categorical features, eliminating the need for manual, step-by-step transformations.
-- 🧹 **Data Cleansing:** Systematic imputation/removal of missing values, ensuring the dataset is primed for effective modeling.
-- 🚨 **Outlier Management:** Application of the **IQR (Interquartile Range)** method on numerical features to mitigate model bias induced by extreme data points.
-- 📏 **MinMax Scaling:** Standardized scaling of numerical features to ensure data uniformity, thereby accelerating model convergence.
-- 🏷️ **One-Hot Encoding:** Transformation of categorical variables, enabling their utilization by both linear and non-linear models.
-- 🔀 **Automated Data Splitting:** Consistent 70:30 train-test split, ensuring an unbiased model evaluation framework.
-- 💾 **Pipeline Persistence:** The full preprocessing pipeline is serialized (using `joblib`) for reuse on new, unseen data without requiring retraining.
-- 📊 **Baseline Modeling:** Implementation of a **Linear Regression model** to establish a performance benchmark for medical cost prediction.
-- 📝 **MLflow Artifact Logging:** Comprehensive logging of the entire transformation pipeline, resulting datasets, the final model, and performance metrics, guaranteeing **traceability** of all experiments.
-- 🤖 **GitHub Actions CI/CD Workflow:** Automation of the entire pipeline execution in the cloud upon code changes, establishing a standard for Continuous Integration.
+<p align="center">
+  <img src="https://img.shields.io/badge/MLFLOW-0194E2?style=for-the-badge&logo=mlflow&logoColor=white" alt="MLflow" />
+  <img src="https://img.shields.io/badge/GITHUB_ACTIONS-2088FF?style=for-the-badge&logo=github-actions&logoColor=white" alt="GitHub Actions" />
+  <img src="https://img.shields.io/badge/GIT-F05032?style=for-the-badge&logo=git&logoColor=white" alt="Git" />
+  <img src="https://img.shields.io/badge/JUPYTER-F37626?style=for-the-badge&logo=jupyter&logoColor=white" alt="Jupyter Notebook" />
+  <img src="https://img.shields.io/badge/KAGGLE-20BEFF?style=for-the-badge&logo=kaggle&logoColor=white" alt="Kaggle" />
+  <img src="https://img.shields.io/badge/UBUNTU-E95420?style=for-the-badge&logo=ubuntu&logoColor=white" alt="Ubuntu" />
+</p>
 
-## 🗂️ Project Structure
+---
 
-The directory structure is organized for clear navigation and maintenance:
+## 📌 Table of Contents
+- [📖 Project Overview](#-project-overview)
+- [✨ Core Capabilities](#-core-capabilities)
+- [🛠️ Tech Stack & Tools](#️-tech-stack--tools)
+- [📊 Dataset & Feature Engineering](#-dataset--feature-engineering)
+- [🏗️ Pipeline Architecture & Workflow](#️-pipeline-architecture--workflow)
+- [🗂️ Repository Structure](#️-repository-structure)
+- [🚀 Quick Start Guide](#-quick-start-guide)
+- [📈 MLflow Experiment Tracking & Baseline Results](#-mlflow-experiment-tracking--baseline-results)
+- [🤖 CI/CD Automation (GitHub Actions)](#-cicd-automation-github-actions)
+- [📦 Pipeline Output Artifacts](#-pipeline-output-artifacts)
+- [👩‍💻 Author & Acknowledgments](#-author--acknowledgments)
+- [📄 License](#-license)
 
+---
+
+## 📖 Project Overview
+
+Predicting individual healthcare expenditure (**medical insurance charges**) is a fundamental requirement in actuarial analysis, insurance premium pricing, and healthcare risk management. Raw healthcare datasets often exhibit significant skewness, multi-scale numerical distributions, and demographic categorical factors that must be systematically prepared before feeding into regression models.
+
+This project delivers an automated, verifiable, and reproducible **Data Preprocessing and Baseline Modeling Pipeline** built under MLOps principles for the **Machine Learning Systems (MSML) 2025** program.
+
+### Primary Goals:
+1. **Zero Data Leakage:** Ensure training and testing distributions are strictly isolated during scaling and statistical outlier detection.
+2. **Modular Transformation:** Employ `scikit-learn`'s `ColumnTransformer` and custom transformers for reusable and scalable preprocessing.
+3. **Reproducibility & Serialization:** Export the fitted preprocessing pipeline (`preprocessor.joblib`) so new, unseen inference samples can be transformed instantaneously.
+4. **Experiment Traceability:** Centrally track preprocessing parameters, dataset splits, regression models, and evaluation metrics using **MLflow**.
+5. **Continuous Integration:** Automatically execute, test, and archive preprocessing artifacts on every commit via **GitHub Actions**.
+
+---
+
+## ✨ Core Capabilities
+
+- ⚡ **Automated Preprocessing Orchestration:** End-to-end execution with a single command (`python run_preprocessing.py`).
+- 🛡️ **Leakage-Safe Outlier Handling:** Custom IQR (`OutlierRemover`) transformer calculated strictly on the training partition ($Q_1 - 1.5 \times IQR$ to $Q_3 + 1.5 \times IQR$).
+- 📏 **Numerical Feature Scaling:** Applies `MinMaxScaler` across numerical columns (`age`, `bmi`, `children`) to standardize scales within $[0, 1]$.
+- 🏷️ **Categorical Vectorization:** Leverages `OneHotEncoder` on demographic attributes (`sex`, `smoker`, `region`).
+- 💾 **Pipeline Persistence:** Persists the complete `ColumnTransformer` state into `preprocessor.joblib`.
+- 📊 **Baseline Regression:** Automatically trains a benchmark `LinearRegression` model to validate data quality and establish a performance baseline.
+- 🔬 **MLflow Experiment Versioning:** Direct metric logging ($R^2$, $MSE$) and artifact serialization into the `preprocessing-pipeline` experiment registry.
+- 🤖 **Automated CI/CD:** Headless execution and multi-artifact uploading in GitHub Actions with 90-day persistence.
+
+---
+
+## 📊 Dataset & Feature Engineering
+
+The dataset is sourced from the [Kaggle Medical Cost Personal Datasets](https://www.kaggle.com/datasets/mirichoi0218/insurance) and is pre-packaged within this repository as [`insurance_raw.csv`](insurance_raw.csv) (1,338 rows).
+
+### Data Dictionary & Transformation Strategy
+
+| Feature Name | Type | Description | Preprocessing Transformation | Dimension Output |
+| :--- | :---: | :--- | :--- | :---: |
+| **`age`** | `int64` | Primary beneficiary age (18 - 64) | `MinMaxScaler` | 1 |
+| **`sex`** | `object` | Gender (`female`, `male`) | `OneHotEncoder` | 2 |
+| **`bmi`** | `float64` | Body Mass Index (15.96 - 53.13) | IQR Outlier Filter + `MinMaxScaler` | 1 |
+| **`children`** | `int64` | Number of insured dependent children (0 - 5) | `MinMaxScaler` | 1 |
+| **`smoker`** | `object` | Smoking status (`yes`, `no`) | `OneHotEncoder` | 2 |
+| **`region`** | `object` | US residential zone (`northeast`, `northwest`, `southeast`, `southwest`) | `OneHotEncoder` | 4 |
+| **`charges`** *(Target)* | `float64` | Annual medical expenditure billed by insurance | Continuous Target Variable | 1 |
+
+> [!NOTE]
+> **Dimensionality:** Raw input consists of 6 predictors. Following one-hot encoding and min-max scaling, the pipeline yields **11 transformed feature dimensions** + 1 continuous target column.
+
+---
+
+## 🏗️ Pipeline Architecture & Workflow
+
+```mermaid
+flowchart TD
+    A["Raw Dataset Ingestion\n(insurance_raw.csv)"] --> B["Separate Predictors & Target\nX: Features | y: charges"]
+    B --> C["Train / Test Splitting\n70% Train (936) : 30% Test (402)\nrandom_state = 42"]
+    
+    subgraph TRAIN_FLOW ["Training Partition (Isolated Fit)"]
+        C --> D["Custom OutlierRemover\nIQR Calculation (1.5 x IQR)"]
+        D --> E["Cleaned Training Data\n(931 samples, 5 outliers dropped)"]
+        E --> F["ColumnTransformer Fitting\n• MinMaxScaler on Numeric\n• OneHotEncoder on Categorical"]
+        F --> G["Transformed X_train_final\n(11 features)"]
+    end
+
+    subgraph TEST_FLOW ["Testing Partition (Evaluation)"]
+        C --> H["Raw Test Partition\n(402 samples)"]
+        F -.->|"Transform Only (No Leakage)"| I["ColumnTransformer.transform()"]
+        H --> I
+        I --> J["Transformed X_test_final\n(11 features)"]
+    end
+
+    G --> K["Export Preprocessed Data\n• insurance_train_preprocessed.csv\n• insurance_test_preprocessed.csv\n• columns.csv"]
+    J --> K
+    F --> L["Serialize Preprocessor Pipeline\n(preprocessor.joblib)"]
+
+    G --> M["Fit Baseline Regressor\n(LinearRegression)"]
+    J --> M
+    M --> N["Evaluate Test Metrics\n• Mean Squared Error (MSE)\n• R² Determination Score"]
+
+    K --> O["MLflow Experiment Tracking\nExperiment: 'preprocessing-pipeline'\n• Artifacts\n• Metrics\n• Model Weights"]
+    L --> O
+    N --> O
+    M --> O
 ```
-.
-├── insurance_raw.csv                          # Dataset mentah
-├── run_preprocessing.py                       # Script utama
-├── requirements.txt                           # Dependencies Python
+
+---
+
+## 🗂️ Repository Structure
+
+```text
+eksperimen_SML-2025/
+├── .github/
+│   └── workflows/
+│       └── preprocessing.yml               # Automated CI workflow configuration
+├── mlruns/                                 # MLflow local tracking experiment repository
+│   └── 810507816068581157/                 # Preprocessing pipeline run metadata & metrics
 ├── preprocessing/
-│   ├── automate_jkw.py                       # Modul preprocessing
-│   ├── preprocessor.joblib                   # Pipeline tersimpan
-│   └── insurance_preprocessing/
-│       ├── columns.csv                       # Header kolom
-│       ├── insurance_train_preprocessed.csv  # Data training
-│       └── insurance_test_preprocessed.csv   # Data testing
-└── .github/
-    └── workflows/
-        └── preprocessing.yml                 # GitHub Actions workflow
-        
+│   ├── insurance_preprocessing/
+│   │   ├── columns.csv                     # Processed feature headers reference
+│   │   ├── insurance_train_preprocessed.csv# Final preprocessed training split (931 rows)
+│   │   └── insurance_test_preprocessed.csv # Final preprocessed testing split (402 rows)
+│   ├── automate_jkw.py                     # Pipeline module, IQR transformer, & MLflow logger
+│   ├── preprocessor.joblib                 # Serialized Scikit-Learn ColumnTransformer
+│   └── Eksperimen_MSML_Jihan_Kusumawardhani.ipynb # Jupyter notebook (EDA & Prototyping)
+├── .gitignore                              # Git exclusion rules
+├── insurance_raw.csv                       # Medical insurance raw dataset
+├── requirements.txt                        # Project Python dependencies
+├── run_preprocessing.py                    # Pipeline orchestrator script
+└── README.md                               # Project documentation
 ```
 
-## 🚀 Execution Guide (Step-by-Step)
+---
 
-1.  **Clone the repository:**
-    ```bash
-    git clone [https://github.com/YOUR_USERNAME/YOUR_REPO.git](https://github.com/YOUR_USERNAME/YOUR_REPO.git)
-    cd YOUR_REPO
-    ```
+## 🚀 Quick Start Guide
 
-2.  **Acquire the Dataset:**
-    - Visit the [Kaggle dataset page](https://www.kaggle.com/datasets/mirichoi0218/insurance).
-    - Download `insurance.csv`.
-    - Rename the file to `insurance_raw.csv` and place it in the project root directory.
+### 1. Clone the Repository
+```bash
+git clone https://github.com/jihanbuildspace/eksperimen_SML-2025.git
+cd eksperimen_SML-2025
+```
 
-3.  **Install Dependencies:**
-    ```bash
-    pip install -r requirements.txt
-    ```
+### 2. Set Up a Virtual Environment
 
-4.  **Run Pipeline Execution:**
-    ```bash
-    python run_preprocessing.py
-    ```
-    - *This single command executes all steps: data cleaning, outlier removal, encoding, scaling, data split, baseline training, and MLflow logging.*
+**Windows (PowerShell):**
+```powershell
+python -m venv venv
+.\venv\Scripts\Activate.ps1
+```
 
-5.  **Verify Artifacts:**
-    - 📂 Processed data and the pipeline object will be generated in `preprocessing/insurance_preprocessing/`.
-    - 📈 If the MLflow tracking server is running, all artifacts, metrics, and run parameters will be accessible via the MLflow UI.
+**Linux / macOS:**
+```bash
+python3 -m venv venv
+source venv/bin/activate
+```
 
-6.  **(Optional) Automatic CI/CD Execution:**
-    - Any push or pull request to the main branch will automatically trigger the GitHub Actions workflow.
-    - Resulting artifacts are available for download from the GitHub Actions interface.
+### 3. Install Required Dependencies
+```bash
+pip install --upgrade pip
+pip install -r requirements.txt
+```
 
-### Example Use Cases
+### 4. Execute the Preprocessing Pipeline
+Execute the complete workflow (cleaning, outlier detection, scaling, baseline modeling, and MLflow logging) in a single run:
+```bash
+python run_preprocessing.py
+```
 
--   **Data Science Experimentation:** Rapidly iterate on the preprocessing steps, re-run the pipeline, and compare performance metrics directly within the MLflow UI.
--   **Production Deployment:** The serialized pipeline (`preprocessor.joblib`) and the model are ready for immediate integration into a production serving application.
--   **Team Collaboration:** Guarantees that all team members execute the identical, verifiable data transformation and training process.
+### 5. Launch the MLflow UI Dashboard
+To visually review your experiment parameters, metrics history, and artifacts:
+```bash
+mlflow ui
+```
+Navigate to **`http://127.0.0.1:5000`** in your browser.
 
-## 🤖 GitHub Actions CI Workflow
+---
 
-This pipeline features integrated CI via GitHub Actions. Upon relevant code changes (push/pull requests) to the main branch, the automated workflow will:
+## 📈 MLflow Experiment Tracking & Baseline Results
 
--   Execute the preprocessing and training script.
--   Save resulting artifacts (processed data, pipeline, model) as downloadable GitHub Artifacts.
--   Ensure pipeline integrity and functional stability.
+All pipeline runs are logged under the **`preprocessing-pipeline`** experiment in MLflow. The baseline model is trained using a benchmark `LinearRegression` regressor.
 
-The workflow can also be triggered manually via the GitHub Actions menu. Artifacts are stored temporarily for 30 days.
+### Empirical Evaluation Metrics
+
+| Metric | MLflow Identifier | Measured Value | Analysis & Meaning |
+| :--- | :---: | :---: | :--- |
+| **Mean Squared Error** | `mse` | **`33,977,041.23`** | Average squared prediction error ($RMSE \approx \$5,828.98$) |
+| **R² Score** | `r2` | **`0.7683`** | The baseline model explains **~76.83%** of target variance |
+
+### Tracked Artifacts in MLflow
+- 📦 `preprocessor.joblib`: Serialized inference-ready preprocessing pipeline.
+- 📋 `columns.csv`: Reference mapping of raw feature names.
+- 📊 `insurance_train_preprocessed.csv` & `insurance_test_preprocessed.csv`: Clean, normalized datasets.
+- 🧠 `model/`: Packaged Scikit-Learn model including conda environment and `MLmodel` specification.
+
+---
+
+## 🤖 CI/CD Automation (GitHub Actions)
+
+This project features an automated Continuous Integration pipeline defined in [`.github/workflows/preprocessing.yml`](.github/workflows/preprocessing.yml).
+
+```mermaid
+graph LR
+    Push[Push to main / Dispatch] --> Runner[Ubuntu 22.04 + Python 3.10]
+    Runner --> Install[Install Dependencies via requirements.txt]
+    Install --> Exec[Run Pipeline via run_preprocessing.py]
+    Exec --> Verify[Verify Data Integrity & Output Files]
+    Verify --> Upload[Upload GitHub Build Artifacts (90-day retention)]
+```
+
+### Key Workflow Features:
+- **Triggers:** Automatically runs on every `push` to the `main` branch, or via manual `workflow_dispatch`.
+- **Environment:** Containerized execution on `ubuntu-latest` with Python `3.10`.
+- **Artifact Publishing:** Automatically packages and uploads the preprocessed CSV datasets and `.joblib` pipeline into GitHub Artifacts for downstream service integration.
+
+---
 
 ## 📦 Pipeline Output Artifacts
 
-Upon successful execution, the following critical artifacts are generated for downstream use, analysis, and reporting:
+| Output File | Target Path | Description |
+| :--- | :--- | :--- |
+| `preprocessor.joblib` | `preprocessing/` | Serialized transformer for production inference pipeline |
+| `columns.csv` | `preprocessing/insurance_preprocessing/` | Feature header reference for input verification |
+| `insurance_train_preprocessed.csv` | `preprocessing/insurance_preprocessing/` | Cleaned and normalized training set (931 rows) |
+| `insurance_test_preprocessed.csv` | `preprocessing/insurance_preprocessing/` | Transformed test set for unbiased validation (402 rows) |
+| `model/` | `mlruns/` | Scikit-Learn baseline linear model logged in MLflow |
 
--   `preprocessor.joblib`: The reusable, persisted preprocessing pipeline object.
--   `insurance_train_preprocessed.csv`: The clean, processed data ready for training.
--   `insurance_test_preprocessed.csv`: The clean, processed data reserved for model evaluation.
--   `columns.csv`: Reference file detailing the final processed feature set.
--   `model.pkl`/`MLmodel`: The trained baseline model (logged in MLflow, ready for deployment).
--   📊 All artifacts, metrics, and the complete history of the run are recorded in the **MLflow UI**.
+---
 
-These artifacts ensure the entire process is fully repeatable and verifiable at any time.
+## 👩‍💻 Author & Acknowledgments
 
-## 👩‍💻 Author
+<div align="center">
 
-This project was developed by:
+**Jihan Kusumawardhani**  
+[![GitHub Profile](https://img.shields.io/badge/GitHub-jihanbuildspace-181717?style=flat-square&logo=github)](https://github.com/jihanbuildspace)
+[![Email](https://img.shields.io/badge/Email-G211220027%40student.usm.ac.id-D14836?style=flat-square&logo=gmail&logoColor=white)](mailto:G211220027@student.usm.ac.id)
 
-**Jihan Kusumawardhani**
+**Universitas Semarang (USM)**  
+*Building Machine Learning Systems (MSML 2025)*
+
+</div>
+
+- **Dataset Credit:** [Miri Choi](https://www.kaggle.com/datasets/mirichoi0218/insurance) via Kaggle.
+- **Reference Framework:** Scikit-Learn Preprocessing & MLflow Tracking Architecture.
+
+---
 
 ## 📄 License
 
-This project is licensed under the MIT License. You are free to use, modify, and distribute the code, provided appropriate attribution is maintained.
+This project is licensed under the [MIT License](LICENSE). You are free to use, modify, and distribute this codebase for educational, research, and production workflows.
