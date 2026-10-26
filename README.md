@@ -9,7 +9,6 @@
 
 <p align="center">
   <a href="https://github.com/jihanbuildspace/eksperimen_SML-2025"><img src="https://img.shields.io/badge/GITHUB-REPO-181717?style=for-the-badge&logo=github&logoColor=white" alt="GitHub" /></a>
-  <a href="mailto:G211220027@student.usm.ac.id"><img src="https://img.shields.io/badge/EMAIL-USM-0078D4?style=for-the-badge&logo=microsoftoutlook&logoColor=white" alt="Email" /></a>
   <a href="https://github.com/jihanbuildspace/eksperimen_SML-2025/actions/workflows/preprocessing.yml"><img src="https://img.shields.io/badge/CI%2FCD-AUTOMATED-28A745?style=for-the-badge&logo=githubactions&logoColor=white" alt="CI/CD" /></a>
 </p>
 
@@ -273,9 +272,7 @@ graph LR
 
 **Jihan Kusumawardhani**  
 [![GitHub Profile](https://img.shields.io/badge/GitHub-jihanbuildspace-181717?style=flat-square&logo=github)](https://github.com/jihanbuildspace)
-[![Email](https://img.shields.io/badge/Email-G211220027%40student.usm.ac.id-D14836?style=flat-square&logo=gmail&logoColor=white)](mailto:G211220027@student.usm.ac.id)
 
-**Universitas Semarang (USM)**  
 *Building Machine Learning Systems (MSML 2025)*
 
 </div>
