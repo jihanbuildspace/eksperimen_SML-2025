@@ -24,6 +24,8 @@ jobs:
         pip install -r requirements.txt
 
     - name: Run preprocessing
+      env:
+        MLFLOW_ALLOW_FILE_STORE: "true"
       run: |
         python run_preprocessing.py
 
